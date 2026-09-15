@@ -14,8 +14,8 @@ python3 -m http.server 8000
 
 1. 將儲存庫推送至 GitHub 的 `main` 分支。
 2. 在 GitHub 儲存庫開啟 **Settings → Pages**。
-3. 將 **Source** 設成 **GitHub Actions**。
-4. 等候 `Deploy PWA to GitHub Pages` workflow 完成。
+3. 將 **Source** 設成 **Deploy from a branch**。
+4. 選擇 `main`、`/(root)` 後儲存。
 
 之後每次推送 `main` 都會自動重新發佈。
 
