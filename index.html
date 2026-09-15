@@ -8,10 +8,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="冰箱日曆" />
-    <link rel="manifest" href="./manifest.webmanifest?v=2026091510" />
+    <link rel="manifest" href="./manifest.webmanifest?v=2026091511" />
     <link rel="icon" href="./icons/icon-192.png" type="image/png" />
     <link rel="apple-touch-icon" href="./icons/icon-192.png" />
-    <link rel="stylesheet" href="./styles.css?v=2026091510" />
+    <link rel="stylesheet" href="./styles.css?v=2026091511" />
     <title>冰箱日曆</title>
   </head>
   <body>
@@ -43,6 +43,7 @@
           <button class="filter-tab is-active" type="button" data-filter="all">全部</button>
           <button class="filter-tab" type="button" data-filter="fridge">冷藏</button>
           <button class="filter-tab" type="button" data-filter="freezer">冷凍</button>
+          <button class="filter-tab" type="button" data-filter="room">常溫</button>
         </nav>
 
         <section id="expiryList" class="expiry-list item-carousel" aria-label="依期限排序的物品" aria-live="polite"></section>
@@ -68,7 +69,7 @@
       <form id="itemForm" method="dialog">
         <header class="dialog-header">
           <h2 id="itemFormTitle">新增物品</h2>
-          <button class="icon-button close-button" value="cancel" formnovalidate aria-label="關閉">
+          <button class="icon-button close-button" type="button" data-close-dialog="itemFormDialog" aria-label="關閉">
             <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
           </button>
         </header>
@@ -77,6 +78,7 @@
           <legend>保存位置</legend>
           <label><input type="radio" name="location" value="fridge" checked /><span><svg viewBox="0 0 24 24"><path d="M7 3h10a2 2 0 0 1 2 2v16H5V5a2 2 0 0 1 2-2ZM5 10h14M8 6h3M8 14h3"/></svg>冷藏</span></label>
           <label><input type="radio" name="location" value="freezer" /><span><svg viewBox="0 0 24 24"><path d="M12 2v20M4.2 6.5l15.6 11M19.8 6.5l-15.6 11M8 4l4 2 4-2M8 20l4-2 4 2M3 10l3 3-1 4M21 10l-3 3 1 4"/></svg>冷凍</span></label>
+          <label><input type="radio" name="location" value="room" /><span><svg viewBox="0 0 24 24"><path d="M4 9 12 4l8 5v11H4V9ZM8 20v-7h8v7M3 9h18"/></svg>常溫</span></label>
         </fieldset>
         <label class="field-label" for="itemName">品項名稱</label>
         <input class="text-input" id="itemName" name="name" maxlength="40" placeholder="例如：鮮奶" autocomplete="off" required />
@@ -85,8 +87,8 @@
         <label class="field-label" for="itemNote">備註 <small>選填</small></label>
         <textarea class="text-input" id="itemNote" name="note" maxlength="120" rows="3" placeholder="例如：開封後請儘快食用"></textarea>
         <div class="dialog-actions">
-          <button class="secondary-button" value="cancel" formnovalidate>取消</button>
-          <button class="primary-button" id="saveItemButton" value="default">儲存物品</button>
+          <button class="secondary-button" type="button" data-close-dialog="itemFormDialog">取消</button>
+          <button class="primary-button" id="saveItemButton" type="submit">儲存物品</button>
         </div>
       </form>
     </dialog>
@@ -175,6 +177,6 @@
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-    <script type="module" src="./app.js?v=2026091510"></script>
+    <script type="module" src="./app.js?v=2026091511"></script>
   </body>
 </html>

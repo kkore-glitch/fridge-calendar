@@ -126,10 +126,10 @@ dialog { color: inherit; }
 
 fieldset { margin: 0; padding: 0; border: 0; }
 .location-fieldset legend, .notice-options legend { margin-bottom: 9px; font-size: 12px; font-weight: 800; }
-.location-fieldset { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 18px; }
+.location-fieldset { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-bottom: 18px; }
 .location-fieldset legend { grid-column: 1 / -1; }
 .location-fieldset input { position: absolute; opacity: 0; }
-.location-fieldset span { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 13px; border: 1px solid var(--line); border-radius: 14px; color: var(--muted); font-weight: 700; cursor: pointer; }
+.location-fieldset span { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 13px 8px; border: 1px solid var(--line); border-radius: 14px; color: var(--muted); font-weight: 700; cursor: pointer; }
 .location-fieldset svg { width: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .location-fieldset input:checked + span { border-color: var(--green); color: var(--green); background: var(--green-light); }
 .field-label { display: block; margin: 16px 0 7px; font-size: 12px; font-weight: 800; }

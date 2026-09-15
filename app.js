@@ -1,4 +1,4 @@
-const APP_VERSION = "2026.09.15.10";
+const APP_VERSION = "2026.09.15.11";
 const DATA_VERSION = 1;
 const ITEMS_KEY = "fridge-calendar-items-v1";
 const SETTINGS_KEY = "fridge-calendar-settings-v1";
@@ -124,7 +124,7 @@ function itemCardTemplate(item) {
       <span class="item-icon">${locationIcon(item.location)}</span>
       <span class="item-main">
         <span class="item-name">${escapeHtml(item.name)}</span>
-        <span class="item-meta">${item.location === "freezer" ? "冷凍" : "冷藏"} · ${formatDate(item.expiryDate)}</span>
+        <span class="item-meta">${locationLabel(item.location)} · ${formatDate(item.expiryDate)}</span>
       </span>
       <span class="item-status">${info.status}<small>${info.substatus}</small></span>
     </button>
@@ -198,7 +198,7 @@ function openDetail(id) {
   state.selectedId = id;
   const info = expiryInfo(item.expiryDate);
   $("#detailName").textContent = item.name;
-  $("#detailLocation").textContent = item.location === "freezer" ? "冷凍" : "冷藏";
+  $("#detailLocation").textContent = locationLabel(item.location);
   $("#detailExpiry").textContent = `${formatDate(item.expiryDate, true)}（${info.status}）`;
   $("#detailNote").textContent = item.note || "無備註";
   const status = $("#detailStatus");
@@ -216,7 +216,7 @@ function renderManageList() {
   const sorted = [...state.items].sort((a, b) => a.expiryDate.localeCompare(b.expiryDate));
   $("#manageList").innerHTML = sorted.length ? sorted.map((item) => `
     <div class="manage-row">
-      <span><b>${escapeHtml(item.name)}</b><small>${item.location === "freezer" ? "冷凍" : "冷藏"} · ${formatDate(item.expiryDate)}</small></span>
+      <span><b>${escapeHtml(item.name)}</b><small>${locationLabel(item.location)} · ${formatDate(item.expiryDate)}</small></span>
       <button class="mini-button edit" type="button" data-id="${escapeHtml(item.id)}" aria-label="編輯 ${escapeHtml(item.name)}">
         <svg viewBox="0 0 24 24"><path d="m4 20 4.5-1L19 8.5 15.5 5 5 15.5 4 20ZM13.5 7l3.5 3.5"/></svg>
       </button>
@@ -470,7 +470,7 @@ function sanitizeItem(item) {
   return {
     id: typeof item.id === "string" && item.id ? item.id : crypto.randomUUID(),
     name: item.name.trim().slice(0, 40),
-    location: item.location === "freezer" ? "freezer" : "fridge",
+    location: ["fridge", "freezer", "room"].includes(item.location) ? item.location : "fridge",
     expiryDate: item.expiryDate,
     note: typeof item.note === "string" ? item.note.slice(0, 120) : "",
     createdAt: item.createdAt || new Date().toISOString(),
@@ -503,7 +503,12 @@ function formatDate(dateString) { return dateString.replaceAll("-", "/"); }
 
 function locationIcon(location) {
   if (location === "freezer") return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M4.2 6.5l15.6 11M19.8 6.5l-15.6 11M8 4l4 2 4-2M8 20l4-2 4 2M3 10l3 3-1 4M21 10l-3 3 1 4"/></svg>';
+  if (location === "room") return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9 12 4l8 5v11H4V9ZM8 20v-7h8v7M3 9h18"/></svg>';
   return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v16H5V5a2 2 0 0 1 2-2ZM5 10h14M8 6h3M8 14h3"/></svg>';
+}
+
+function locationLabel(location) {
+  return location === "freezer" ? "冷凍" : location === "room" ? "常溫" : "冷藏";
 }
 
 function escapeHtml(value) {

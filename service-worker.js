@@ -1,5 +1,5 @@
-const CACHE_NAME = "fridge-calendar-2026-09-15-10";
-const APP_SHELL = ["./", "./index.html", "./styles.css?v=2026091510", "./app.js?v=2026091510", "./manifest.webmanifest?v=2026091510", "./icons/icon-192.png", "./icons/icon-512.png"];
+const CACHE_NAME = "fridge-calendar-2026-09-15-11";
+const APP_SHELL = ["./", "./index.html", "./styles.css?v=2026091511", "./app.js?v=2026091511", "./manifest.webmanifest?v=2026091511", "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)));
