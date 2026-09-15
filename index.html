@@ -22,6 +22,9 @@
           <span><b>冰箱日曆</b></span>
         </a>
         <div class="top-actions">
+          <button class="settings-button" id="settingsButton" type="button" aria-label="設定" title="設定">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+          </button>
           <button class="icon-button" id="transferButton" type="button" aria-label="資料轉移" title="資料轉移">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3m3 3-3 3M17 17H6l3 3m-3-3 3-3"/></svg>
           </button>
@@ -32,11 +35,8 @@
       </header>
 
       <main>
-        <section class="welcome" aria-labelledby="pageTitle">
+        <section class="welcome" aria-label="今日日期">
           <p class="date-label" id="todayLabel"></p>
-          <button class="settings-button" id="settingsButton" type="button" aria-label="設定" title="設定">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
-          </button>
         </section>
 
         <nav class="filter-tabs" aria-label="位置篩選">

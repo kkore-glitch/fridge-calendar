@@ -1,4 +1,4 @@
-const APP_VERSION = "2026.09.15.8";
+const APP_VERSION = "2026.09.15.9";
 const DATA_VERSION = 1;
 const ITEMS_KEY = "fridge-calendar-items-v1";
 const SETTINGS_KEY = "fridge-calendar-settings-v1";

@@ -60,9 +60,9 @@ button, .item-card { -webkit-tap-highlight-color: transparent; }
 }
 .icon-button svg, .settings-button svg { width: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
-.welcome { display: flex; align-items: center; justify-content: space-between; padding: 14px 2px 18px; }
+.welcome { padding: 14px 2px 18px; }
 .date-label { margin: 0; color: var(--muted); font-size: 11px; font-weight: 700; }
-.settings-button { margin-bottom: 4px; color: var(--green); }
+.settings-button { color: var(--green); }
 
 .filter-tabs { display: flex; gap: 4px; margin: 8px 0 20px; padding: 4px; border: 1px solid var(--line); border-radius: 14px; }
 .filter-tab { flex: 1; padding: 9px; border: 0; border-radius: 10px; color: var(--muted); background: transparent; font-weight: 700; cursor: pointer; }
