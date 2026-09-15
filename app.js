@@ -1,4 +1,4 @@
-const APP_VERSION = "2026.09.15.9";
+const APP_VERSION = "2026.09.15.10";
 const DATA_VERSION = 1;
 const ITEMS_KEY = "fridge-calendar-items-v1";
 const SETTINGS_KEY = "fridge-calendar-settings-v1";
@@ -392,7 +392,8 @@ async function showNotification(title, body, tag) {
 async function registerServiceWorker() {
   if (!("serviceWorker" in navigator)) return;
   try {
-    await navigator.serviceWorker.register("./service-worker.js");
+    const registration = await navigator.serviceWorker.register(`./service-worker.js?v=${APP_VERSION}`, { updateViaCache: "none" });
+    await registration.update();
     await registerPeriodicSync();
     await syncNotificationData();
     checkNotifications();
